@@ -46,7 +46,9 @@ def main(params):
         if model_name in ["gkt"]:
             train_config["batch_size"] = 16 
         if model_name in ["qdkt","qikt"] and dataset_name in ['algebra2005','bridge2algebra2006']:
-            train_config["batch_size"] = 32 
+            train_config["batch_size"] = 32
+        if model_name in ["gikt"]:
+            train_config["batch_size"] = 32
         model_config = copy.deepcopy(params)
         for key in ["model_name", "dataset_name", "emb_type", "save_dir", "fold", "seed"]:
             del model_config[key]

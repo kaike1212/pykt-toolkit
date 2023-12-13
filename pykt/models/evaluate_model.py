@@ -120,6 +120,11 @@ def evaluate(model, test_loader, model_name, rel=None, save_path=""):
                 y = (y * one_hot(cshft.long(), model.num_c)).sum(-1)
             elif model_name == "gkt":
                 y = model(cc.long(), cr.long())
+            #TODO
+            elif model_name == "gikt":
+                y = model(cc.long(), cr.long(), m.long())
+                #y=torch.ge(y,torch.tensor(0.5))
+
             elif model_name == "lpkt":
                 # cat = torch.cat((d["at_seqs"][:,0:1], dshft["at_seqs"]), dim=1).to(device)
                 cit = torch.cat((dcur["itseqs"][:,0:1], dcur["shft_itseqs"]), dim=1)
